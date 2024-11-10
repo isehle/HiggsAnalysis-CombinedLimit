@@ -1,0 +1,16 @@
+imax 3
+jmax 5
+kmax *
+---------------
+shapes * * data/zzPolFractions/cosTheta3/all_cosTheta3_hists_scalePolsToIncl_v2.root $CHANNEL/$PROCESS
+---------------
+bin         fs_4e fs_4mu fs_2e2mu
+------------------------------
+bin             fs_4e fs_4e fs_4e fs_4e fs_4e fs_4e fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu
+process         ZLZL  ZLZT  ZTZT  ZpX   H     VVV   ZLZL   ZLZT   ZTZT   ZpX    H      VVV    ZLZL     ZLZT     ZTZT     ZpX      H        VVV
+process         0     1     2     3     4     5     0      1      2      3      4      5      0        1        2        3        4        5
+rate            -1    -1    -1    -1    -1    -1    -1     -1     -1     -1     -1     -1     -1       -1       -1       -1       -1       -1
+--------------------------------
+lumi lnN 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014 1.014
+--------------------------------
+* autoMCStats 0

@@ -1,0 +1,16 @@
+imax 3
+jmax 2
+kmax *
+---------------
+shapes * * data/zzPolFractions/all_cosThetaStar_hists.root $CHANNEL/$PROCESS
+---------------
+bin         fs_4e fs_4mu fs_2e2mu
+------------------------------
+bin             fs_4e fs_4e fs_4e fs_4mu fs_4mu fs_4mu fs_2e2mu fs_2e2mu fs_2e2mu
+process         ZLZL  ZLZT  ZTZT  ZLZL   ZLZT   ZTZT   ZLZL     ZLZT     ZTZT    
+process         0     1     2     0      1      2      0        1        2       
+rate            -1    -1    -1    -1     -1     -1     -1       -1       -1      
+--------------------------------
+
+--------------------------------
+* autoMCStats 0
