@@ -1,0 +1,41 @@
+imax 4
+jmax 5
+kmax *
+------
+shapes * * /afs/cern.ch/user/i/iehle/CMSSW_14_1_0_pre4/src/HiggsAnalysis/CombinedLimit/data/zzPolFractions/ggBkg/2022/EraEFG/hists_noSmartCut_wLepIDReco.root cosTheta3/SR/$CHANNEL/$PROCESS cosTheta3/SR/$CHANNEL/$PROCESS_$SYSTEMATIC
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bin fs_4e fs_4mu fs_2e2mu fs_2mu2e
+----------------------------------
+bin     fs_4e fs_4e fs_4e fs_4e fs_4e fs_4e fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e
+process ZLZL  ZLZT  ZTZT  ggZZ  ZpX   VVV   ZLZL   ZLZT   ZTZT   ggZZ   ZpX    VVV    ZLZL     ZLZT     ZTZT     ggZZ     ZpX      VVV      ZLZL     ZLZT     ZTZT     ggZZ     ZpX      VVV     
+process 0     1     2     3     4     5     0      1      2      3      4      5      0        1        2        3        4        5        0        1        2        3        4        5       
+rate    -1    -1    -1    -1    0     -1    -1     -1     -1     -1     -1     -1     -1       -1       -1       -1       -1       -1       -1       -1       -1       -1       -1       -1      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rateScale_2022_EFG_fs_4e    rateParam fs_4e    ZLZL 94.08  [93.81,94.35]  
+rateScale_2022_EFG_fs_4e    rateParam fs_4e    ZLZT 94.08  [93.81,94.35]  
+rateScale_2022_EFG_fs_4e    rateParam fs_4e    ZTZT 94.08  [93.81,94.35]  
+rateScale_2022_EFG_fs_4mu   rateParam fs_4mu   ZLZL 157.67  [157.3,158.04]
+rateScale_2022_EFG_fs_4mu   rateParam fs_4mu   ZLZT 157.67  [157.3,158.04]
+rateScale_2022_EFG_fs_4mu   rateParam fs_4mu   ZTZT 157.67  [157.3,158.04]
+rateScale_2022_EFG_fs_2e2mu rateParam fs_2e2mu ZLZL 103.05 [102.76,103.34]
+rateScale_2022_EFG_fs_2e2mu rateParam fs_2e2mu ZLZT 103.05 [102.76,103.34]
+rateScale_2022_EFG_fs_2e2mu rateParam fs_2e2mu ZTZT 103.05 [102.76,103.34]
+rateScale_2022_EFG_fs_2mu2e rateParam fs_2mu2e ZLZL 138.84 [138.5,139.18]
+rateScale_2022_EFG_fs_2mu2e rateParam fs_2mu2e ZLZT 138.84 [138.5,139.18]
+rateScale_2022_EFG_fs_2mu2e rateParam fs_2mu2e ZTZT 138.84 [138.5,139.18]
+--------------------------------------------------------------------------
+lumi           lnN    1.014      1.014      1.014      1.014      -  1.014      1.014       1.014       1.014       1.014       -  1.014        1.014      1.014      1.014      1.014      -  1.014      1.014      1.014      1.014      1.014       -  1.014     
+LHEScaleWeight shape  1          1          1          -          -  -          1           1           1           -           -  -            1          1          1          -          -  -          1          1          1          -           -  -             
+LHEPdfWeight   shape  1          1          1          -          -  -          1           1           1           -           -  -            1          1          1          -          -  -          1          1          1          -           -  -            
+puWeight       shape  1          1          1          -          -  -          1           1           1           -           -  -            1          1          1          -          -  -          1          1          1          -           -  -         
+lepIDRec       shape  1          1          1          -          -  -          1           1           1           -           -  -            1          1          1          -          -  -          1          1          1          -           -  -           
+kfactor_ggzz   lnN    -          -          -          1.1        -  -          -           -           -           1.1         -  -            -          -          -          1.1        -  -          -          -          -          1.1         -  -         
+kfactor_qqzz   lnN    1.001      1.001      1.001      -          -  -          1.001       1.001       1.001       -           -  -            1.001      1.001      1.001      -          -  -          1.001      1.001      1.001      -           -  -         
+eff_4e         lnN    0.99/1.005 0.99/1.005 0.99/1.005 0.99/1.005 -  0.99/1.005 -           -           -           -           -  -            -          -          -          -          -  -          -          -          -          -           -  -                 
+eff_4mu        lnN    -          -          -          -          -  -          0.985/1.001 0.985/1.001 0.985/1.001 0.985/1.001 -  0.985/1.001  -          -          -          -          -  -          -          -          -          -           -  -                 
+eff_2e2mu      lnN    -          -          -          -          -  -          -           -           -           -           -  -            0.99/1.001 0.99/1.001 0.99/1.001 0.99/1.001 -  0.99/1.001 0.99/1.001 0.99/1.001 0.99/1.001 0.99/1.001  -  0.99/1.001
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+syst_no_mcStat group = lumi LHEScaleWeight LHEPdfWeight puWeight lepIDRec eff_4e eff_4mu eff_2e2mu
+#syst_no_mcStat group = lumi LHEScaleWeight LHEPdfWeight puWeight eff_4e eff_4mu eff_2e2mu
+------------------------------------------------------------------------------------------------------
+* autoMCStats 0

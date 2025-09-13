@@ -1,0 +1,27 @@
+imax 4
+jmax 5
+kmax *
+
+shapes * * ~/CMSSW_14_1_0_pre4/src/HiggsAnalysis/CombinedLimit/data/zzPolFractions/ggBkg/SS_NoSIP_HighMass_OneBin_wPolsNormNNLO.root $CHANNEL/$PROCESS
+
+bin         fs_4e fs_4mu fs_2e2mu fs_2mu2e
+observation -1    -1     -1       -1
+
+bin     fs_4e fs_4e fs_4e fs_4e fs_4e fs_4e fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_4mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2e2mu fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e fs_2mu2e
+process ZLZL  ZLZT  ZTZT  ggZZ  VVV   ZpX   ZLZL   ZLZT   ZTZT   ggZZ   VVV    ZpX    ZLZL     ZLZT     ZTZT     ggZZ     VVV      ZpX      ZLZL     ZLZT     ZTZT     ggZZ     VVV      ZpX
+process 0     1     2     3     4     5     0      1      2      3      4      5      0        1        2        3        4        5        0        1        2        3        4        5
+rate    -1    -1    -1    -1    -1    -1    -1     -1     -1     -1     -1     -1     -1       -1       -1       0       -1       -1       -1       -1       -1       -1       -1       -1
+
+n_ZpX_4e_CR    rateParam fs_4e    ZpX 1. [0,10]
+n_ZpX_4mu_CR   rateParam fs_4mu   ZpX 1. [0,10]
+n_ZpX_2e2mu_CR rateParam fs_2e2mu ZpX 1. [0,10]
+n_ZpX_2mu2e_CR rateParam fs_2mu2e ZpX 1. [0,10]
+
+lumi           lnN    1.014       1.014       1.014       1.014       1.014       -  1.014       1.014       1.014       1.014       1.014        -  1.014       1.014       1.014       1.014       1.014       -  1.014       1.014       1.014       1.014       1.014       - 
+eff_4e         lnN    0.99/1.005  0.99/1.005  0.99/1.005  0.99/1.005  0.99/1.005  -  -           -           -           -           -            -  -           -           -           -           -           -  -           -           -           -           -           -          
+eff_4mu        lnN    -           -           -           -           -           -  0.985/1.001 0.985/1.001 0.985/1.001 0.985/1.001 0.985/1.001  -  -           -           -           -           -           -  -           -           -           -           -           -          
+eff_2e2mu      lnN    -           -           -           -           -           -  -           -           -           -           -            -  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  -  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  -
+kfactor_ggzz   lnN    -           -           -           1.1         -           -  -           -           -           1.1         -            -  -           -           -           1.1         -           -  -           -           -           1.1         -           -
+kfactor_qqzz   lnN    1.001       1.001       1.001       -           -           -  1.001       1.001       1.001       -           -            -  1.001       1.001       1.001       -           -           -  1.001       1.001       1.001       -           -           - 
+
+* autoMCStats 0

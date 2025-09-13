@@ -1,0 +1,24 @@
+imax 3
+jmax 2
+kmax *
+---------------
+shapes * * data/zzPolFractions/ggBkg/cosTheta1/cosTheta1_hists_polOnlyTheoryVars.root $CHANNEL/$PROCESS $CHANNEL/$PROCESS_$SYSTEMATIC
+---------------
+bin         fs_4e fs_4mu fs_2e2mu
+------------------------------
+bin             fs_4e fs_4e fs_4e fs_4mu fs_4mu fs_4mu fs_2e2mu fs_2e2mu fs_2e2mu
+process         ZLZL  ZLZT  ZTZT  ZLZL   ZLZT   ZTZT   ZLZL     ZLZT     ZTZT    
+process         0     1     2     0      1      2      0        1        2       
+rate            -1    -1    -1    -1     -1     -1     -1       -1       -1      
+--------------------------------
+lumi           lnN   1.014        1.014        1.014        1.014        1.014        1.014        1.014        1.014        1.014            
+#QCDScale_ggVV lnN   -            -            -            -            -            -            -            -            -                   
+LHEScaleWeight shape 1            1            1 -          1            1            1            1            1            1          
+#pdf_gg        lnN   -            -            -            -            -            -            -            -            -                    
+LHEPdfWeight   shape 1            1            1            1            1            1            1            1            1          
+eff_4e         lnN   1.088/1.103  1.088/1.103  1.088/1.103  -            -            -            -            -            -                    
+eff_4mu        lnN   -            -            -            1.009/1.019  1.009/1.019  1.009/1.019  -            -            -                    
+eff_2e2mu_el   lnN   -            -            -            -            -            -            1.059/1.062  1.059/1.062  1.059/1.062
+eff_2e2mu_mu   lnN   -            -            -            -            -            -            1.007/1.014  1.007/1.014  1.007/1.014
+--------------------------------
+* autoMCStats 0

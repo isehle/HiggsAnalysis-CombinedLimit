@@ -1,0 +1,37 @@
+imax 2
+jmax 5
+kmax *
+------
+shapes * * /afs/cern.ch/user/i/iehle/CMSSW_14_1_0_pre4/src/HiggsAnalysis/CombinedLimit/data/zzPolFractions/ggBkg/2022/Full/hists_allShapeVar_normPolsFlatZpX_24_06_25.root delRapidity/SR/$CHANNEL/$PROCESS delRapidity/SR/$CHANNEL/$PROCESS_$SYSTEMATIC
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bin fs_2x2e fs_2x2mu fs_2e2mu fs_2mu2e
+----------------------------------
+bin     fs_2x2e fs_2x2e fs_2x2e fs_2x2e fs_2x2e fs_2x2e fs_2x2mu fs_2x2mu fs_2x2mu fs_2x2mu fs_2x2mu fs_2x2mu
+process ZLZL    ZLZT    ZTZT    ggZZ    ZpX     VVV     ZLZL     ZLZT     ZTZT     ggZZ     ZpX      VVV      
+process 0       1       2       3       4       5       0        1        2        3        4        5          
+rate    -1      -1      -1      -1      -1       -1      -1       -1       -1       -1       -1       -1      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rateScale_2022_Full_fs_2x2e  rateParam fs_2x2e  ZLZL 260.35866  [259.88589,260.83143]  
+rateScale_2022_Full_fs_2x2e  rateParam fs_2x2e  ZLZT 260.35866  [259.88589,260.83143]  
+rateScale_2022_Full_fs_2x2e  rateParam fs_2x2e  ZTZT 260.35866  [259.88589,260.83143]  
+rateScale_2022_Full_fs_2x2mu rateParam fs_2x2mu ZLZL 279.98256 [279.48775,280.47737]
+rateScale_2022_Full_fs_2x2mu rateParam fs_2x2mu ZLZT 279.98256 [279.48775,280.47737]
+rateScale_2022_Full_fs_2x2mu rateParam fs_2x2mu ZTZT 279.98256 [279.48775,280.47737]
+
+zpx_2022_Full_fs_2x2e  rateParam fs_2x2e  ZpX 13.48 [10.96,16.0]
+zpx_2022_Full_fs_2x2mu rateParam fs_2x2mu ZpX 3.72  [2.47,4.87]
+--------------------------------------------------------------------------
+lumi           lnN    1.014       1.014       1.014       1.014       -  1.014       1.014       1.014       1.014       1.014       -  1.014      
+LHEScaleWeight shape  1           1           1           -           -  -           1           1           1           -           -  -           
+LHEPdfWeight   shape  1           1           1           -           -  -           1           1           1           -           -  -          
+puWeight       shape  1           1           1           1           -  1           1           1           1           1           -  1          
+lepIDRec       shape  1           1           1           1           -  1           1           1           1           1           -  1                
+kfactor_ggzz   lnN    -           -           -           1.1         -  -           -           -           -           1.1         -  -          
+kfactor_qqzz   lnN    1.001       1.001       1.001       -           -  -           1.001       1.001       1.001       -           -  -          
+eff_4e         lnN    0.99/1.005  0.99/1.005  0.99/1.005  0.99/1.005  -  0.99/1.005  -           -           -           -           -  -                  
+eff_4mu        lnN    -           -           -           -           -  -           0.985/1.001 0.985/1.001 0.985/1.001 0.985/1.001 -  0.985/1.001       
+eff_2e2mu      lnN    0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  -  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  0.99/1.001  -  0.99/1.001
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+syst_no_mcStat group = lumi LHEScaleWeight LHEPdfWeight puWeight lepIDRec eff_4e eff_4mu eff_2e2mu kfactor_ggzz kfactor_qqzz
+------------------------------------------------------------------------------------------------------
+* autoMCStats 0

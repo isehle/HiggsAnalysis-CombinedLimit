@@ -12,7 +12,8 @@ def draw_plots(shape_file, fs_dir, name=""):
     titles = {
     f"cosTheta1_shapes{name}.root": "cos(#theta_{1})",
     f"cosTheta3_shapes{name}.root": "cos(#theta_{3})",
-    f"cosThetaStar_shapes{name}.root": "cos(#theta *)"
+    f"cosThetaStar_shapes{name}.root": "cos(#theta *)",
+    f"delRapidity_shapes{name}.root": "|#Delta(y_{ZZ'})|"
     }
 
     canvas = ROOT.TCanvas()
@@ -24,10 +25,10 @@ def draw_plots(shape_file, fs_dir, name=""):
     h_dat = fin.Get(fs_dir + "/data_obs")  # This is a TGraphAsymmErrors, not a TH1F
 
     #h_xt  = fin.Get(fs_dir + "/ZXZT_qq")
-    h_lt  = fin.Get(fs_dir + "/ZLZT_qq")
-    h_tt  = fin.Get(fs_dir + "/ZTZT_qq")
+    h_lt  = fin.Get(fs_dir + "/ZLZT")
+    h_tt  = fin.Get(fs_dir + "/ZTZT")
 
-    h_xt  = h_lt.Clone("ZXZT")
+    h_xt  = h_lt.Clone("ZLZT")
     h_xt.Add(h_tt)
 
     h_bkg.SetFillColor(ROOT.TColor.GetColor(100, 192, 232))
@@ -60,7 +61,7 @@ def draw_plots(shape_file, fs_dir, name=""):
     legend.AddEntry(h_err, "Background uncertainty", "F")
     legend.Draw()
 
-    outfile = "{}_{}{}_LLandXT.png".format(shape_file.replace("_shapes.root", ""), fs_dir.replace("fs_", ""), name)
+    outfile = "{}_{}{}.png".format(shape_file.replace("_shapes.root", ""), fs_dir.replace("fs_", ""), name)
 
     canvas.SaveAs(outfile)
 

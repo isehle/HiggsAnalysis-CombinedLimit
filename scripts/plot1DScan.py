@@ -201,7 +201,8 @@ val_2sig = main_scan["val_2sig"]
 textfit = "%s = %.3f{}^{#plus %.3f}_{#minus %.3f}" % (fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
 
 
-pt = ROOT.TPaveText(0.59, 0.82 - len(other_scans) * 0.08, 0.95, 0.91, "NDCNB")
+#pt = ROOT.TPaveText(0.59, 0.82 - len(other_scans) * 0.08, 0.95, 0.91, "NDCNB")
+pt = ROOT.TPaveText(0.10, 0.77 - len(other_scans) * 0.08, 0.90, 0.79, "NDCNB")
 pt.AddText(textfit)
 
 if args.breakdown is None:
@@ -217,7 +218,8 @@ if args.breakdown is None:
 
 
 if args.breakdown is not None:
-    pt.SetX1(0.50)
+    #pt.SetX1(0.50)
+    pt.SetX1(0.15)
     if len(other_scans) >= 3:
         pt.SetX1(0.19)
         pt.SetX2(0.88)
@@ -254,12 +256,17 @@ pt.SetTextAlign(11)
 pt.SetTextFont(42)
 pt.Draw()
 
-plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.1, 0.035, 1.2, cmsTextSize=1.0)
+#plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.1, 0.035, 1.2, cmsTextSize=1.0)
+plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.2, 0.035, 1.2, cmsTextSize=1.0)
 
 legend_l = 0.69
+legend = ROOT.TLegend(0.15, legend_l, 0.45, 0.78, "", "NBNDC")
+
+legend_l = 0.84
 if len(other_scans) > 0:
     legend_l = legend_l - len(other_scans) * 0.04
-legend = ROOT.TLegend(0.15, legend_l, 0.45, 0.78, "", "NBNDC")
+
+legend = ROOT.TLegend(0.65, legend_l, 0.95, 0.93)
 if len(other_scans) >= 3:
     legend = ROOT.TLegend(0.46, 0.83, 0.95, 0.93, "", "NBNDC")
     legend.SetNColumns(2)

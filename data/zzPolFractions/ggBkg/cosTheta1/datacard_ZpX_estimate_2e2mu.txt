@@ -1,0 +1,29 @@
+imax 4
+jmax 4
+kmax *
+-------
+bin          HighMass_OS HighMass_SS MidMass_SS MidMass_OS
+observation  230         3           5          43
+----------------------------------------------------------
+bin          HighMass_OS HighMass_OS HighMass_OS HighMass_OS HighMass_OS HighMass_SS HighMass_SS MidMass_SS HighMass_SS HighMass_SS MidMass_OS MidMass_OS MidMass_OS MidMass_OS MidMass_OS MidMass_SS MidMass_SS MidMass_SS MidMass_SS MidMass_SS 
+process      qqZZ        ggZZ        ZpX         VVV         H           qqZZ        ggZZ        ZpX        VVV         H           qqZZ       ggZZ       ZpX        VVV        H          qqZZ       ggZZ       ZpX        VVV        H     
+process      0           1           2           3           4           0           1           2          3           4           0          1          2          3          4          0          1          2          3          4
+rate         214.16      56.34       1           1.92        0           2.22        0.37        1          0.03        1           24.53      3.74       1          0.18       0.01       0.29       0.04       1          0.03       0
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n_zpx rateParam HighMass_OS ZpX (@0*(@1/@2)) n_zpp_ss_high_mass,n_zpp_os_mid_mass,n_zpp_ss_mid_mass
+
+# Estimate as Data - N_MC_notZpX (where ZpX = DY + ttbar + WZ)
+n_zpp_ss_high_mass rateParam HighMass_SS qqZZ -1
+n_zpp_ss_high_mass rateParam HighMass_SS ggZZ -1
+n_zpp_ss_high_mass rateParam HighMass_SS VVV  -1
+n_zpp_ss_high_mass rateParam HighMass_SS H    -1
+
+n_zpp_ss_mid_mass rateParam MidMass_SS qqZZ -1
+n_zpp_ss_mid_mass rateParam MidMass_SS ggZZ -1
+n_zpp_ss_mid_mass rateParam MidMass_SS VVV  -1
+n_zpp_ss_mid_mass rateParam MidMass_SS H    -1
+
+n_zpp_os_mid_mass rateParam MidMass_OS qqZZ -1
+n_zpp_os_mid_mass rateParam MidMass_OS ggZZ -1
+n_zpp_os_mid_mass rateParam MidMass_OS VVV  -1
+n_zpp_os_mid_mass rateParam MidMass_OS H    -1

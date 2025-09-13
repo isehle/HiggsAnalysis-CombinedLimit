@@ -44,6 +44,25 @@ class PolZZModel(PhysicsModel):
                 raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
         return 1
 
+class DiBosonRateParams(PhysicsModel):
+    def doParametersOfInterest(self):
+        """Create POI and other parameters, and define the POI set."""
+        self.modelBuilder.doVar("f_LL[0.058, 0, 1]") # From Denner and Pelliccioli: https://inspirehep.net/literature/1884197
+        self.modelBuilder.doVar("r[1,0,5]")
+        self.modelBuilder.factory_('expr::f_LL_r("@0*@1", r, f_LL)')
+        self.modelBuilder.factory_('expr::f_XT_r("@0*(1-@1)", r, f_LL)')
+        self.modelBuilder.doSet("POI", ",".join(["r", "f_LL"]))
+
+    def getYieldScale(self, bin, process):
+        "Return the name of a RooAbsReal to scale this yield by or the two special values 1 and 0 (don't scale, and set to zero)"
+        if self.DC.isSignal[process]:
+            print("Scaling %s/%s by r*f_L*N_%s" % (bin, process, bin))
+            return "f_LL_r"
+        elif ("ZLZT" in process) or ("ZTZT" in process):
+            print("Scaling %s/%s by r*(1-f_LL)*N_%s" % (bin, process, bin))
+            return "f_XT_r"
+        return 1
+
 class PolZZSepQQModel(PhysicsModel):
 
     def doParametersOfInterest(self):
@@ -205,6 +224,88 @@ class SinglePolModel(PhysicsModel):
                 raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
         return 1
 
+class SinglePolGGBkgModel(PhysicsModel):
+
+    def doParametersOfInterest(self):
+        """Create POI and other parameters, and define the POI set."""
+        # self.modelBuilder.doVar("N_ZZ_4e[114.56]") # Tight lep pT cuts (correct) # VERY UNCLEAR WHERE THESE NUMBERS COME FROM
+        # self.modelBuilder.doVar("N_ZZ_4mu[171.01]")
+        # self.modelBuilder.doVar("N_ZZ_2e2mu[276.85]")
+        self.modelBuilder.doVar("N_ZZ_4e[85.09]") # These are actually correct
+        self.modelBuilder.doVar("N_ZZ_4mu[136.7]")
+        self.modelBuilder.doVar("N_ZZ_2e2mu[214.16]")
+        self.modelBuilder.doVar("f_L[0.2452, 0, 1]") # Slight difference with noTau
+        self.modelBuilder.doVar("r[1,-5,5]")
+        self.modelBuilder.factory_('expr::f_LL_4e("@0*@1*@1*@2", r, f_L, N_ZZ_4e)')
+        self.modelBuilder.factory_('expr::f_LL_4mu("@0*@1*@1*@2", r, f_L, N_ZZ_4mu)')
+        self.modelBuilder.factory_('expr::f_LL_2e2mu("@0*@1*@1*@2", r, f_L, N_ZZ_2e2mu)')
+        self.modelBuilder.factory_('expr::f_LT_4e("2*@0*@1*(1-@1)*@2", r, f_L, N_ZZ_4e)')
+        self.modelBuilder.factory_('expr::f_LT_4mu("2*@0*@1*(1-@1)*@2", r, f_L, N_ZZ_4mu)')
+        self.modelBuilder.factory_('expr::f_LT_2e2mu("2*@0*@1*(1-@1)*@2", r, f_L, N_ZZ_2e2mu)')
+        self.modelBuilder.factory_('expr::f_TT_4e("@0*(1-@1)*(1-@1)*@2", r, f_L, N_ZZ_4e)')
+        self.modelBuilder.factory_('expr::f_TT_4mu("@0*(1-@1)*(1-@1)*@2", r, f_L, N_ZZ_4mu)')
+        self.modelBuilder.factory_('expr::f_TT_2e2mu("@0*(1-@1)*(1-@1)*@2", r, f_L, N_ZZ_2e2mu)')
+        self.modelBuilder.doSet("POI", ",".join(["r", "f_L"]))
+
+    def getYieldScale(self, bin, process):
+        "Return the name of a RooAbsReal to scale this yield by or the two special values 1 and 0 (don't scale, and set to zero)"
+        if self.DC.isSignal[process]:
+            print("Scaling %s/%s by r*f_L^2*N_%s" % (bin, process, bin))
+            if bin=="fs_4e":
+                return "f_LL_4e"
+            elif bin == "fs_4mu":
+                return "f_LL_4mu"
+            elif bin == "fs_2e2mu":
+                return "f_LL_2e2mu"
+            else:
+                raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
+        elif "ZLZT" in process:
+            print("Scaling %s/%s by 2*r*f_L*(1-f_L)*N_%s" % (bin, process, bin))
+            if bin=="fs_4e":
+                return "f_LT_4e"
+            elif bin == "fs_4mu":
+                return "f_LT_4mu"
+            elif bin == "fs_2e2mu":
+                return "f_LT_2e2mu"
+            else:
+                raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
+        elif "ZTZT" in process:
+            print("Scaling %s/%s by r*(1-f_L)^2*N_%s" % (bin, process, bin))
+            if bin=="fs_4e":
+                return "f_TT_4e"
+            elif bin == "fs_4mu":
+                return "f_TT_4mu"
+            elif bin == "fs_2e2mu":
+                return "f_TT_2e2mu"
+            else:
+                raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
+        return 1
+    
+class SinglePolRateParams(PhysicsModel):
+
+    def doParametersOfInterest(self):
+        """Create POI and other parameters, and define the POI set."""
+        #self.modelBuilder.doVar("f_L[0.2452, 0, 1]") # Slight difference with noTau
+        self.modelBuilder.doVar("f_L[0.2408, 0, 1]") # Corresponds to f_LL=0.058 from Denner and Pelliccioli: https://inspirehep.net/literature/1884197
+        #self.modelBuilder.doVar("r[1,-5,5]")
+        self.modelBuilder.doVar("r[1,0,5]")
+        self.modelBuilder.factory_('expr::f_LL("@0*@1*@1", r, f_L)')
+        self.modelBuilder.factory_('expr::f_LT("2*@0*@1*(1-@1)", r, f_L)')
+        self.modelBuilder.factory_('expr::f_TT("@0*(1-@1)*(1-@1)", r, f_L)')
+        self.modelBuilder.doSet("POI", ",".join(["r", "f_L"]))
+
+    def getYieldScale(self, bin, process):
+        "Return the name of a RooAbsReal to scale this yield by or the two special values 1 and 0 (don't scale, and set to zero)"
+        if self.DC.isSignal[process]:
+            print("Scaling %s/%s by r*f_L^2*N_%s" % (bin, process, bin))
+            return "f_LL"
+        elif "ZLZT" in process:
+            print("Scaling %s/%s by 2*r*f_L*(1-f_L)*N_%s" % (bin, process, bin))
+            return "f_LT"
+        elif "ZTZT" in process:
+            print("Scaling %s/%s by r*(1-f_L)^2*N_%s" % (bin, process, bin))
+            return "f_TT"
+        return 1
 
 class LOtoNLOZZ(PhysicsModel):
 
@@ -233,7 +334,11 @@ class LOtoNLOZZ(PhysicsModel):
                 raise Exception("Bin options are fs_4e, fs_4mu, fs_2e2mu")
         return 1
 
-polZZModel     = PolZZModel()
-singlePolModel = SinglePolModel()
-polZZSepQQ     = PolZZSepQQModel()
-loToNLO        = LOtoNLOZZ()
+polZZModel          = PolZZModel()
+singlePolModel      = SinglePolModel()
+singlePolGGBkg      = SinglePolGGBkgModel()
+singlePolRateParams = SinglePolRateParams()
+polZZSepQQ          = PolZZSepQQModel()
+loToNLO             = LOtoNLOZZ()
+
+diBosonRateParams   = DiBosonRateParams()
